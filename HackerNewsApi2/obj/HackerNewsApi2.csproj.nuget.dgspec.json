@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\aheendracp\\source\\repos\\HackerNewsApi2\\HackerNewsApi2.csproj": {}
+    "C:\\Users\\aheendracp\\Documents\\HackerApi\\HackerNewsApi2\\HackerNewsApi2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\aheendracp\\source\\repos\\HackerNewsApi2\\HackerNewsApi2.csproj": {
+    "C:\\Users\\aheendracp\\Documents\\HackerApi\\HackerNewsApi2\\HackerNewsApi2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aheendracp\\source\\repos\\HackerNewsApi2\\HackerNewsApi2.csproj",
+        "projectUniqueName": "C:\\Users\\aheendracp\\Documents\\HackerApi\\HackerNewsApi2\\HackerNewsApi2.csproj",
         "projectName": "HackerNewsApi2",
-        "projectPath": "C:\\Users\\aheendracp\\source\\repos\\HackerNewsApi2\\HackerNewsApi2.csproj",
+        "projectPath": "C:\\Users\\aheendracp\\Documents\\HackerApi\\HackerNewsApi2\\HackerNewsApi2.csproj",
         "packagesPath": "C:\\Users\\aheendracp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aheendracp\\source\\repos\\HackerNewsApi2\\obj\\",
+        "outputPath": "C:\\Users\\aheendracp\\Documents\\HackerApi\\HackerNewsApi2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

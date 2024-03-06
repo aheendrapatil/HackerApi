@@ -25,9 +25,8 @@ namespace HackerNewsApi2.Controllers
         public IEnumerable<Story> Get(int id)
         {
             List<Story> list = new List<Story>();
-            list = getAllBestStories();
-            List<Story> SortedList = list.OrderByDescending(o => o.score).ToList();
-            return SortedList.Take(id);
+            list = getAllBestStories();            
+            return list.Take(id);
         }
 
         // POST api/<HackerController>
@@ -68,8 +67,7 @@ namespace HackerNewsApi2.Controllers
                 story = obj;                
                 list.Add(story);
             }            
-            
-            return list;
+            return list.OrderByDescending(o => o.score).ToList();
         }
     }
 }
