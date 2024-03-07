@@ -1,4 +1,5 @@
 ﻿using HackerNewsApi2.Models;
+using HackerNewsApi2.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -12,21 +13,26 @@ namespace HackerNewsApi2.Controllers
     [ApiController]
     public class HackerController : ControllerBase
     {
+        private readonly IStoryRepositories _storyRepositories;
+        public HackerController(IStoryRepositories storyRepositories)
+        {
+            _storyRepositories = storyRepositories;
+        }
         // GET: api/<HackerController>
         [HttpGet]
         public IEnumerable<Story> Get()        {
             List<Story> list = new List<Story>();
-            list = getAllBestStories();                        
+            list = _storyRepositories.GetAllBestStories();                        
             return list;
         }
 
         // GET api/<HackerController>/5
-        [HttpGet("{id}")]
-        public IEnumerable<Story> Get(int id)
+        [HttpGet("{topCount}")]
+        public IEnumerable<Story> Get(int topCount)
         {
             List<Story> list = new List<Story>();
-            list = getAllBestStories();            
-            return list.Take(id);
+            list = _storyRepositories.GetAllBestStories();
+            return list.Take(topCount);
         }
 
         // POST api/<HackerController>
@@ -46,28 +52,6 @@ namespace HackerNewsApi2.Controllers
         public void Delete(int id)
         {
         }
-
-        public List<Story> getAllBestStories()
-        {
-            List<Story> list = new List<Story>();
-            string jsn = ((new WebClient()).DownloadString("https://hacker-news.firebaseio.com/v0/beststories.json"));
-            
-            string urlPrefix = "https://hacker-news.firebaseio.com/v0/item/";
-            string urlSufix = ".json";
-            jsn = jsn.Substring(1, jsn.Length - 2);
-            string[] storyIds = jsn.Split(',');
-            Story story = new Story();
-            for (int i = 0; i < storyIds.Length; i++)
-            {
-                storyIds[i] = storyIds[i].Trim();
-
-                story = new Story();
-                var stry = ((new WebClient()).DownloadString(urlPrefix + storyIds[i] + urlSufix));
-                var obj = JsonConvert.DeserializeObject<Story>(stry);
-                story = obj;                
-                list.Add(story);
-            }            
-            return list.OrderByDescending(o => o.score).ToList();
-        }
+        
     }
 }
